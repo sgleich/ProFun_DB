@@ -20,6 +20,9 @@ The SourceID needs to be in the header line (i.e., line containig '>') of each c
 ```
 sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ AssemblyFile.fasta > AssemblyFileNew.fasta
 ```
-## 
+## Run TransDecoder on all assemblies to obtain protein sequences (.faa files)
+```
+./TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t AssemblyFileNew.fast
+```
 
 
