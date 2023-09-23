@@ -27,23 +27,28 @@ sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.pep > AssemblyNew.pep
 ## Concatenate all new (non-MMETSP) protein files together. Concatenate new protein files and the MMETSP protein file. 
 Each .pep file here corresponds to a different reference transcriptome that is being added to the MMETSP.
 ```
-cat AssemblyNew.pep AssemblyNew2.pep AssemblyNew3.pep > all_assemblies.pep
-cat all_assemblies.pep mmetsp.pep > fungi_mmetsp.pep
+cat AssemblyNew.pep AssemblyNew2.pep AssemblyNew3.pep > all_fungi_assemblies.pep
+cat all_fungi_assemblies.pep mmetsp.pep > fungi_mmetsp.pep
 ```
 ## Make taxonomy table with taxonomy information for all of the new assemblies that are being added to the MMETSP. 
 Make a taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
+<br>
 <br>
 &emsp; Unnamed: 0 &emsp; Domain &emsp; Supergroup &emsp; Division &emsp; Class &emsp; Order &emsp; Family &emsp; Genus &emsp; Species &emsp; Source_ID
 <br>
 0 &emsp; 0 &emsp; Eukaryota &emsp; Opisthokonta &emsp; Ascomycota &emsp; Sordariomycetes &emsp; Microascales &emsp; Halosphaeriac &emsp; Corollospora &emsp; Corollospora_maritima &emsp; Corollospora
 <br>
 1 &emsp; 1 &emsp; Eukaryota &emsp; Opisthokonta &emsp; Basidiomycota &emsp; Agaricomycetes &emsp; Agaricales &emsp; Niaceae &emsp; Digitatispora &emsp; Digitatispora_marina &emsp; Digitatispora
+<br>
+<br>
+The Source_ID columns must match the SOURCE_ID labels that were added to the .pep files above. Save this file as a .txt file (e.g., fungi_tax.txt) and remove the header row from the file for the next step. 
+
 ## Concatenate new taxonomy table with MMETSP taxonomy table.
 ```
-cat
+cat mmetsp_tax.txt fungi_tax.txt > fungi_mmmetsp_tax.txt
 ```
 ## Run create_protein_table.py script in EUKulele to make a new database using the concatenated .pep file and the concatenated taxonomy (.txt) file.
 ```
-create_protein_table.py --infile_peptide mast_fungi_mmetsp.pep --infile_taxonomy mast_fungi_mmetsp_tax.txt --outfile_json mast_fungi_mmetsp_db.json --output mast_fungi_mmetsp_db.txt --delim "/"
+create_protein_table.py --infile_peptide fungi_mmetsp.pep --infile_taxonomy fungi_mmetsp_tax.txt --outfile_json fungi_mmetsp_db.json --output fungi_mmetsp_db.txt --delim "/"
 ```
 
