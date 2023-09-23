@@ -15,14 +15,14 @@ Fungal reference genomes can be obtained from the MycoCosm database. All 8 refer
 <br>
 [Access the MycoCosm database here](https://mycocosm.jgi.doe.gov/mycocosm/home)
 
-## Add Source ID to all contigs in file
+## Run TransDecoder on all assemblies to obtain protein sequences (.pep files)
+```
+./TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t Assembly.fasta
+```
+## Add Source ID to all .pep file headers
 The SourceID needs to be in the header line (i.e., line containig '>') of each contig in each assembly. The SourceID you include here will need to match a taxonomy file that we will create next. 
 ```
-sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ AssemblyFile.fasta > AssemblyFileNew.fasta
-```
-## Run TransDecoder on all assemblies to obtain protein sequences (.faa files)
-```
-./TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t AssemblyFileNew.fast
+sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.pep > AssemblyNew.pep
 ```
 
 
