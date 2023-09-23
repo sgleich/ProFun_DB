@@ -33,7 +33,11 @@ cat all_assemblies.pep mmetsp.pep > fungi_mmetsp.pep
 ## Make taxonomy table with taxonomy information for all of the new assemblies that are being added to the MMETSP. 
 Make a taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
 <br>
-&emsp; 
+&emsp; Unnamed: 0 &emsp; Domain &emsp; Supergroup &emsp; Division &emsp; Class &emsp; Order &emsp; Family &emsp; Genus &emsp; Species &emsp; Source_ID
+<br>
+0 &emsp; 0 &emsp; Eukaryota &emsp; Opisthokonta &emsp; Ascomycota &emsp; Sordariomycetes &emsp; Microascales &emsp; Halosphaeriac &emsp; Corollospora &emsp; Corollospora_maritima &emsp; Corollospora
+<br>
+1 &emsp; 1 &emsp; Eukaryota &emsp; Opisthokonta &emsp; Basidiomycota &emsp; Agaricomycetes &emsp; Agaricales &emsp; Niaceae &emsp; Digitatispora &emsp; Digitatispora_marina &emsp; Digitatispora
 ## Concatenate new taxonomy table with MMETSP taxonomy table.
 ```
 cat
