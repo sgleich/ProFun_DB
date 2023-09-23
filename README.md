@@ -24,13 +24,22 @@ The SourceID needs to be in the header line (i.e., line containig '>') of each c
 ```
 sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.pep > AssemblyNew.pep
 ```
-## Concatenate all protein files together
+## Concatenate all new (non-MMETSP) protein files together. Concatenate new protein files and the MMETSP protein file. 
 Each .pep file here corresponds to a different reference transcriptome that is being added to the MMETSP.
 ```
 cat AssemblyNew.pep AssemblyNew2.pep AssemblyNew3.pep > all_assemblies.pep
+cat all_assemblies.pep mmetsp.pep > fungi_mmetsp.pep
 ```
-## Make taxonomy table
+## Make taxonomy table with taxonomy information for all of the new assemblies that are being added to the MMETSP. 
 Make a taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
 <br>
-
+&emsp; 
+## Concatenate new taxonomy table with MMETSP taxonomy table.
+```
+cat
+```
+## Run create_protein_table.py script in EUKulele to make a new database using the concatenated .pep file and the concatenated taxonomy (.txt) file.
+```
+create_protein_table.py --infile_peptide mast_fungi_mmetsp.pep --infile_taxonomy mast_fungi_mmetsp_tax.txt --outfile_json mast_fungi_mmetsp_db.json --output mast_fungi_mmetsp_db.txt --delim "/"
+```
 
