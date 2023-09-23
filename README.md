@@ -24,5 +24,13 @@ The SourceID needs to be in the header line (i.e., line containig '>') of each c
 ```
 sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.pep > AssemblyNew.pep
 ```
+## Concatenate all protein files together
+Each .pep file here corresponds to a different reference transcriptome that is being added to the MMETSP.
+```
+cat AssemblyNew.pep AssemblyNew2.pep AssemblyNew3.pep > all_assemblies.pep
+```
+## Make taxonomy table
+Make a taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
+<br>
 
 
