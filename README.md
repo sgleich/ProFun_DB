@@ -5,7 +5,7 @@ The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) databas
 This repository will require the use of [TransDecoder](https://github.com/TransDecoder/TransDecoder) and [EUKulele](https://github.com/AlexanderLabWHOI/EUKulele).
 
 
-## Download SAGs and fungal reference genomes
+## Download SAGs and fungal reference genomes.
 SAG data were obtained from Labarre et al. (2021); https://doi.org/10.1038/s41396-020-00885-8
 <br>
 [Access the MAST SAG data here](https://figshare.com/articles/dataset/Co-assembly/12430790?backTo=/collections/Comparative_genomics_reveals_new_functional_insights_in_uncultured_MAST_species/5008046)
@@ -15,11 +15,11 @@ Fungal reference genomes can be obtained from the MycoCosm database. All 8 refer
 <br>
 [Access the MycoCosm database here](https://mycocosm.jgi.doe.gov/mycocosm/home)
 
-## Run TransDecoder on all assemblies to obtain protein sequences (.pep files)
+## Run TransDecoder on all assemblies to obtain protein sequences (.pep files).
 ```
 ./TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t Assembly.fasta
 ```
-## Add Source ID to all .pep file headers
+## Add Source ID to all .pep file headers.
 The SourceID needs to be in the header line (i.e., line containig '>') of each contig in each assembly. The SourceID you include here will need to match a taxonomy file that we will create next. 
 ```
 sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.pep > AssemblyNew.pep
@@ -51,4 +51,8 @@ cat mmetsp_tax.txt fungi_tax.txt > fungi_mmmetsp_tax.txt
 ```
 create_protein_table.py --infile_peptide fungi_mmetsp.pep --infile_taxonomy fungi_mmetsp_tax.txt --outfile_json fungi_mmetsp_db.json --output fungi_mmetsp_db.txt --delim "/"
 ```
-
+## Run EUKulele with custom (MMETSP + Fungi) database. The previous EUKulele command (create_protein_table.py) will produce 2 new database files (fungi_mmetsp_db.txt and fungi_mmetsp_db.json).
+```
+EUKulele -m mets --sample_dir /path/to/directory --out_dir /path/to/directory/eukulele_out --reference_dir /path/to/directory/ --ref_fasta fungi_mmetsp.pep --n_ext cds --tax_table fungi_mmetsp_db.txt --protein_map fungi_mmetsp_db.json
+```
+This EUKulele command will annotate your metatranscriptome assembly contigs using the custom fungi + mmetsp database!
