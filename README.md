@@ -2,7 +2,7 @@
 ![](static/fungi.tiff)
 # Protist_Fungi_DB
 ## By: Samantha Gleich & Syrena Whitner
-The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST SAGs and fungal reference genomes into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
+The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs) and fungal reference genomes into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
 <br>
 <br>
 This repository will require the use of [TransDecoder](https://github.com/TransDecoder/TransDecoder) and [EUKulele](https://github.com/AlexanderLabWHOI/EUKulele).
@@ -18,7 +18,7 @@ Fungal reference genomes can be obtained from the MycoCosm database. All 8 refer
 <br>
 [Access the MycoCosm database here](https://mycocosm.jgi.doe.gov/mycocosm/home)
 
-## Run TransDecoder on all assemblies to obtain protein sequences (.pep files).
+## Run TransDecoder on all assemblies to obtain putative protein-coding sequences (.pep files).
 ```
 ./TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t Assembly.fasta
 ```
