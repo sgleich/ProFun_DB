@@ -18,6 +18,7 @@ SAG data were obtained from Labarre et al. (2021); https://doi.org/10.1038/s4139
 Fungal reference genomes can be obtained from the MycoCosm database. We pulled all of the mycocosm protein files using the get_jgi_genomes GitHub repo. 
 <br>
 [Access the MycoCosm database here](https://mycocosm.jgi.doe.gov/mycocosm/home)
+<br>
 [Access the get_jgi_genomes Github repo here](https://github.com/guyleonard/get_jgi_genomes)
 
 ## Run TransDecoder on MAST SAGs to obtain putative protein-coding sequences.
