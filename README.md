@@ -70,7 +70,7 @@ The Source_ID columns must match the SOURCE_ID labels that were added to the .pe
 ```
 cat mmetsp_tax.txt fungi_tax.txt mast_tax.txt > fungi_mast_mmmetsp_tax.txt
 ```
-## Run create_protein_table.py script in EUKulele to make a new database using the concatenated .pep file and the concatenated taxonomy (.txt) file.
+## Run create_protein_table.py script in EUKulele to make a new database using the concatenated protein file and the concatenated taxonomy file.
 ```
 create_protein_table.py --infile_peptide fungi_mast_mmetsp.fa --infile_taxonomy fungi_mast_mmmetsp_tax.txt --outfile_json fungi_mast_mmetsp_db.json --output fungi_mast_mmetsp_db.txt --delim "/"
 ```
