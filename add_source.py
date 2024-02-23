@@ -13,5 +13,5 @@ def main():
                 else:
                     print(line,file=file_out)
 
-
-main()
+if __name__ == "__main__":
+    main()
