@@ -2,7 +2,7 @@
 ![](static/fungi.tiff)
 # Protist_Fungi_DB
 ## By: Samantha Gleich & Syrena Whitner
-## Updated: February 21, 2024
+## Updated: February 23, 2024
 The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs) and fungal protein sequences into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
 <br>
 <br>
@@ -28,33 +28,24 @@ Fungal reference genomes can be obtained from the MycoCosm database. We pulled a
 ## Add Source ID to all MAST protein file sequence headers.
 The SourceID needs to be in the header line (i.e., line containig '>') of each contig in each assembly. The SourceID you include here will need to match a taxonomy file that we will create next. 
 ```
-sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ Assembly.fasta > AssemblyNew.fasta
+sed 's/>.*/& \/SOURCE_ID=NameOfOrganism/‘ MAST_1.fasta > new_MAST_1.fa
+rm MAST_1.fasta
 ```
 ## Add Source ID to all fungi protein file sequence headers.
-Because we are working with > 1,000 fungal protein files, we added the Source ID to the sequence headers using a loop to save time. The bash loop was scripted with the help of ChatGPT.
+Because we are working with > 1,000 fungal protein files, we added the Source ID to the sequence headers using a custom python script. See script add_source.py in this repository. 
 ```
-for file in *.fasta; do
-    if [[ -f "$file" ]]; then
-        filename=$(basename "$file" .fasta)
-        output="${filename}New.fasta"
-        
-        while IFS= read -r header; do
-            echo ">${header} /SOURCE_ID=${filename}"
-            sed -n "/$header/{n;p}" "$file"
-        done < <(grep '^>' "$file" | sed 's/^>//') > "$output"
-    fi
-done
+python ./add_source.py
 ```
 
 ## Concatenate all new (non-MMETSP) protein files together. Concatenate new protein files and the MMETSP protein file. 
-Each .fasta file here corresponds to a different reference that is being added to the MMETSP.
+Each .fasta file here corresponds to a different reference that is being added to the MMETSP. Make sure that the files being concatenated all have the SOURCE_ID added in the previous step(s). 
 ```
-cat AssemblyNew.fasta AssemblyNew2.fasta AssemblyNew3.fasta > all_fungal_proteins.fasta
-cat AssemblyMASTNew.fasta AssemblyMASTNew2.fasta AssemblyMASTNew3.fasta > all_MAST_proteins.fasta
-cat all_fungal_proteins.fasta all_MAST_proteins.fasta mmetsp.fa > fungi_mast_mmetsp.fa
+cat new_*.fasta > all_fungal_proteins.fa
+cat new_MAST*.fasta > all_MAST_proteins.fa
+cat all_fungal_proteins.fa all_MAST_proteins.fa mmetsp.fa > fungi_mast_mmetsp.fa
 ```
 ## Make taxonomy table with taxonomy information for all of the new assemblies that are being added to the MMETSP. 
-Make a taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
+Make a tab separated taxonomy table that is in the same format as the EUKulele taxonomy table. Example: 
 <br>
 <br>
 &emsp; Unnamed: 0 &emsp; Domain &emsp; Supergroup &emsp; Division &emsp; Class &emsp; Order &emsp; Family &emsp; Genus &emsp; Species &emsp; Source_ID
@@ -64,7 +55,7 @@ Make a taxonomy table that is in the same format as the EUKulele taxonomy table.
 1 &emsp; 1 &emsp; Eukaryota &emsp; Opisthokonta &emsp; Basidiomycota &emsp; Agaricomycetes &emsp; Agaricales &emsp; Niaceae &emsp; Digitatispora &emsp; Digitatispora_marina &emsp; Digitatispora
 <br>
 <br>
-The Source_ID columns must match the SOURCE_ID labels that were added to the .pep files above. Save this file as a .txt file (e.g., fungi_tax.txt) and remove the header row from the file for the next step. 
+The Source_ID columns must match the SOURCE_ID labels that were added to the .fa files above. Save this file as a .txt file (e.g., fungi_tax.txt) and remove the header row (i.e., Unnamed: 0 &emsp; Domain &emsp;) from the file for the next step. 
 
 ## Concatenate new taxonomy table with MMETSP taxonomy table.
 ```
