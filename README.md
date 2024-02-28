@@ -1,8 +1,8 @@
 ![](static/protist.png)
 ![](static/fungi.tiff)
-# Protist_Fungi_DB
+# The Pro Fun DB!
 ## By: Samantha Gleich & Syrena Whitner
-## Updated: February 23, 2024
+## Updated: February 28, 2024
 The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs) and fungal protein sequences into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
 <br>
 <br>
@@ -65,8 +65,8 @@ cat mmetsp_tax.txt fungi_tax.txt mast_tax.txt > fungi_mast_mmmetsp_tax.txt
 ```
 create_protein_table.py --infile_peptide fungi_mast_mmetsp.fa --infile_taxonomy fungi_mast_mmmetsp_tax.txt --outfile_json fungi_mast_mmetsp_db.json --output fungi_mast_mmetsp_db.txt --delim "/"
 ```
-## Run EUKulele with custom (MMETSP + Fungi + MAST) database. The previous EUKulele command (create_protein_table.py) will produce 2 new database files (fungi_mast_mmetsp_db.txt and fungi_mast_mmetsp_db.json).
+## Run EUKulele with custom Pro(tist) Fun(gi) database. The previous EUKulele command (create_protein_table.py) will produce 2 new database files (fungi_mast_mmetsp_db.txt and fungi_mast_mmetsp_db.json).
 ```
 EUKulele -m mets --sample_dir /path/to/directory --out_dir /path/to/directory/eukulele_out --reference_dir /path/to/directory/ --ref_fasta fungi_mast_mmetsp.fa --n_ext cds --tax_table fungi_mast_mmetsp_db.txt --protein_map fungi_mast_mmetsp_db.json
 ```
-This EUKulele command will annotate your metatranscriptome assembly contigs using the custom fungi + mast + mmetsp database!
+This EUKulele command will annotate your metatranscriptome assembly contigs using the custom Pro Fun database!
