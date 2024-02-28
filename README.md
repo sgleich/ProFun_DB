@@ -59,14 +59,14 @@ The Source_ID columns must match the SOURCE_ID labels that were added to the .fa
 
 ## Concatenate new taxonomy table with MMETSP taxonomy table.
 ```
-cat mmetsp_tax.txt fungi_tax.txt mast_tax.txt > fungi_mast_mmmetsp_tax.txt
+cat mmetsp_tax.txt fungi_tax.txt mast_tax.txt > ProFun_Taxonomy.txt
 ```
 ## Run create_protein_table.py script in EUKulele to make a new database using the concatenated protein file and the concatenated taxonomy file.
 ```
-create_protein_table.py --infile_peptide fungi_mast_mmetsp.fa --infile_taxonomy fungi_mast_mmmetsp_tax.txt --outfile_json fungi_mast_mmetsp_db.json --output fungi_mast_mmetsp_db.txt --delim "/"
+create_protein_table.py --infile_peptide ProFun_Pep.fa --infile_taxonomy fungi_mast_mmmetsp_tax.txt --outfile_json ProFun_Map.json --output ProFun_Taxonomy.txt --delim "/"
 ```
 ## Run EUKulele with custom Pro(tist) Fun(gi) database. The previous EUKulele command (create_protein_table.py) will produce 2 new database files (fungi_mast_mmetsp_db.txt and fungi_mast_mmetsp_db.json).
 ```
-EUKulele -m mets --sample_dir /path/to/directory --out_dir /path/to/directory/eukulele_out --reference_dir /path/to/directory/ --ref_fasta fungi_mast_mmetsp.fa --n_ext cds --tax_table fungi_mast_mmetsp_db.txt --protein_map fungi_mast_mmetsp_db.json
+EUKulele -m mets --sample_dir /path/to/directory --out_dir /path/to/directory/eukulele_out --reference_dir /path/to/directory/ --ref_fasta ProFun_Pep.fa --n_ext cds --tax_table ProFun_Taxonomy.txt --protein_map ProFun_Map.json
 ```
 This EUKulele command will annotate your metatranscriptome assembly contigs using the custom Pro Fun database!
