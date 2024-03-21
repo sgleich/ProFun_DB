@@ -1,8 +1,8 @@
 ![](static/protist.png)
 ![](static/fungi.tiff)
-# The Pro Fun DB!
+# The ProFun (Protist-Fungi) DB!
 ## By: Samantha Gleich & Syrena Whitner
-## Updated: February 28, 2024
+## Updated: March 21, 2024
 The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs) and fungal protein sequences into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
 <br>
 <br>
