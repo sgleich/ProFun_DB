@@ -23,6 +23,7 @@ Fungal reference genomes can be obtained from the MycoCosm database. We pulled a
 <br>
 <br>
 Metazoan reference sequences can be obtained from the EukProt databse
+<br>
 [Access the EukProt database here](https://evocellbio.com/eukprot)
 
 ## Run TransDecoder on MAST SAGs to obtain putative protein-coding sequences.
