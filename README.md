@@ -10,7 +10,7 @@ This repository will require the use of [TransDecoder](https://github.com/TransD
 
 
 ## Download SAGs and fungal protein sequences.
-SAG data were obtained from Labarre et al. (2021); https://doi.org/10.1038/s41396-020-00885-8
+SAG data were obtained from Labarre et al. (2021); https://doi.org/10.1038/s41396-020-00885-8 .
 <br>
 [Access the MAST SAG data here](https://figshare.com/articles/dataset/Co-assembly/12430790?backTo=/collections/Comparative_genomics_reveals_new_functional_insights_in_uncultured_MAST_species/5008046)
 <br>
@@ -22,7 +22,7 @@ Fungal reference genomes can be obtained from the MycoCosm database. We pulled a
 [Access the get_jgi_genomes Github repo here](https://github.com/guyleonard/get_jgi_genomes)
 <br>
 <br>
-Metazoan reference sequences can be obtained from the EukProt databse
+Metazoan reference sequences can be obtained from the EukProt databse.
 <br>
 [Access the EukProt database here](https://evocellbio.com/eukprot)
 
