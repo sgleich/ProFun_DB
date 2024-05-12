@@ -2,8 +2,8 @@
 ![](static/fungi.tiff)
 # The ProFun (Protist-Fungi) DB!
 ## By: Samantha Gleich & Syrena Whitner
-## Updated: March 21, 2024
-The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there is only one fungal group included in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs) and fungal protein sequences into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
+## Updated: May 11, 2024
+The Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP) database is often used to annotate environmental sequence data; however, this databse does not contain references for a key group of marine protists, the MArine STramenopiles (MAST). Additionally, there are no metazoan representatives and only a single fungal species represented in the MMETSP in its current form. Here, we show how to incorporate MAST single amplified genomes (SAGs), metazoan protein sequences, and fungal protein sequences into a EUKulele database (https://eukulele.readthedocs.io/en/latest/). This database can then be used to annotate environmental sequence data. 
 <br>
 <br>
 This repository will require the use of [TransDecoder](https://github.com/TransDecoder/TransDecoder) and [EUKulele](https://github.com/AlexanderLabWHOI/EUKulele).
@@ -20,6 +20,10 @@ Fungal reference genomes can be obtained from the MycoCosm database. We pulled a
 [Access the MycoCosm database here](https://mycocosm.jgi.doe.gov/mycocosm/home)
 <br>
 [Access the get_jgi_genomes Github repo here](https://github.com/guyleonard/get_jgi_genomes)
+<br>
+<br>
+Metazoan reference sequences can be obtained from the EukProt databse
+[Access the EukProt database here](https://evocellbio.com/eukprot)
 
 ## Run TransDecoder on MAST SAGs to obtain putative protein-coding sequences.
 ```
